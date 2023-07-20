@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { questions } from "./questions";
+import SingleQuestion from "./SingleQuestion";
 
-function App() {
+export default function App() {
+  const [cards] = useState(questions);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <section className="max-w-xl mx-auto py-20 px-4">
+        <h1 className="text-center uppercase tracking-widest font-bold mb-8">
+          Challenge Faqs
+        </h1>
+
+        <section className="grid grid-cols-1 gap-8">
+          {cards.map((card, index) => (
+            <SingleQuestion {...card} key={index} />
+          ))}
+        </section>
+      </section>
+    </>
   );
 }
-
-export default App;
